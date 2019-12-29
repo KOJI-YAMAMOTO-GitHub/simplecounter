@@ -11,19 +11,6 @@
     <link rel="stylesheet" href="">
     <link rel="shortcut icon" href="">
 </head>
-<script type="text/javascript">
-    var $countLeft = 0;
-    var $countRight = 0;
-    function countUpLeft() {
-        document.getElementById("outputLeft").innerHTML = ++$countLeft;
-    }
-    function countUpRight() {
-        document.getElementById("outputRight").innerHTML = ++$countRight;
-    }
-    document.addEventListener('touchstart', function (event) {
-        console.log("aaaaa");
-    });
-</script>
 <style type="text/css">
     table {
         width: 95vw;
@@ -64,19 +51,79 @@
         height: 80%;
     }
 </style>
+<script type="text/javascript">
+    var $countLeft = 0;
+    var $countLeftTime = "";
+    var $countRight = 0;
+    var $countRightTtime = "";
+
+    // function countUpLeft() {
+    //     leftup();
+    // }
+    // function countUpRight() {
+    //     rightup();
+    // }
+    document.addEventListener('touchstart', function (event) {
+        // if (event.touches[0].target.id == "hitareaLeft") {
+        if (event.touches[0].target.id == "outputLeft") {
+            leftup();
+        }
+        // else if (event.touches[0].target.id == "hitareaRight") {
+        else if (event.touches[0].target.id == "outputRight") {
+            rightup();
+        }
+    });
+    function LoadProc() {
+        var now = new Date();
+
+        var Year = now.getFullYear();
+        var Month = now.getMonth() + 1;
+        var Dates = now.getDate();
+        var Hour = now.getHours();
+        var Min = now.getMinutes();
+        var Sec = now.getSeconds();
+        var Mill = now.getMilliseconds();
+
+        var nowtime = Year + "年" + Month + "月" + Dates + "日" + Hour + ":" + Min + ":" + Sec + "." + Mill;
+        return nowtime;
+    }
+    function leftup() {
+        document.getElementById("outputLeft").innerHTML = ++$countLeft;
+        $countLeftTime = $countLeftTime + "<br>" + LoadProc();
+        document.getElementById("hitareaLeftTime").innerHTML = $countLeftTime;
+    }
+    function rightup() {
+        document.getElementById("outputRight").innerHTML = ++$countRight;
+        $countRightTtime = $countRightTtime + "<br>" + LoadProc();
+        document.getElementById("hitareaRightTime").innerHTML = $countRightTtime;
+    }
+</script>
 
 <body>
     <table>
         <tr>
-            <th id="outputLeft">
+            <th id="outputLeft" onclick="countUpLeft();">
                 <div id="outputLeftCounter">0</div>
             </th>
-            <th id="outputRight">
+            <th id="outputRight" onclick="countUpRight();">
                 <div id="outputRightCounter">0</div>
             </th>
         </tr>
-        <tr>
+        <!-- <tr>
             <td id="hitareaLeft" onclick="countUpLeft();">TOUCH ME LEFT</td>
             <td id="hitareaRight" onclick="countUpRight();">TOUCH ME RIGHT</td>
+        </tr> -->
+    </table>
+    <table>
+        <tr>
+            <th>
+                <div id="hitareaLeftTime"></div>
+            </th>
+            <th>
+                <div id="hitareaRightTime"></div>
+            </th>
         </tr>
     </table>
+</body>
+
+</html>
