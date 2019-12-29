@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <link rel="shortcut icon" href="">
+</head>
+<script type="text/javascript">
+    var $countLeft = 0;
+    var $countRight = 0;
+    function countUpLeft() {
+        document.getElementById("outputLeft").innerHTML = ++$countLeft;
+    }
+    function countUpRight() {
+        document.getElementById("outputRight").innerHTML = ++$countRight;
+    }
+    document.addEventListener('touchstart', function (event) {
+        console.log("aaaaa");
+    });
+</script>
+<style type="text/css">
+    table {
+        width: 95vw;
+        height: 95vh;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    #outputLeft {
+        margin-left: 15px;
+        font-size: 15vh;
+    }
+
+    #outputLeftCounter {
+        font-size: 15vh;
+    }
+
+    #outputRight {
+        margin-left: 15px;
+        font-size: 15vh;
+    }
+
+    #outputRightCounter {
+        font-size: 15vh;
+    }
+
+    #hitareaLeft {
+        margin: 10px 10px 8px;
+        background: blue;
+        color: #fff;
+        height: 80%;
+    }
+
+    #hitareaRight {
+        margin: 10px 10px 8px;
+        background: green;
+        color: #fff;
+        height: 80%;
+    }
+</style>
+
+<body>
+    <table>
+        <tr>
+            <th id="outputLeft">
+                <div id="outputLeftCounter">0</div>
+            </th>
+            <th id="outputRight">
+                <div id="outputRightCounter">0</div>
+            </th>
+        </tr>
+        <tr>
+            <td id="hitareaLeft" onclick="countUpLeft();">TOUCH ME LEFT</td>
+            <td id="hitareaRight" onclick="countUpRight();">TOUCH ME RIGHT</td>
+        </tr>
+    </table>
